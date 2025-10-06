@@ -262,3 +262,4 @@ C:\Users\shubh\source\repos\CRUD_Application_Project\CRUD_Application_Project\ob
 C:\Users\shubh\source\repos\CRUD_Application_Project\CRUD_Application_Project\obj\Debug\net8.0\CRUD_Application_Project.pdb
 C:\Users\shubh\source\repos\CRUD_Application_Project\CRUD_Application_Project\obj\Debug\net8.0\CRUD_Application_Project.genruntimeconfig.cache
 C:\Users\shubh\source\repos\CRUD_Application_Project\CRUD_Application_Project\obj\Debug\net8.0\ref\CRUD_Application_Project.dll
+C:\Users\shubh\source\repos\CRUD_Application_Project\CRUD_Application_Project\obj\Debug\net8.0\CRUD_Application_Project.sourcelink.json

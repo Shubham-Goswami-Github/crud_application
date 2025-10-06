@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@*
+  File: Views/Shared/_Layout.cshtml
+  Replace your existing layout with this. Keeps all asp-* helpers intact.
+*@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,82 +11,298 @@
     <title>@ViewData["Title"] - CRUD_Application_Project</title>
 
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="" crossorigin="anonymous">
 
-    <!-- Custom Styles -->
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tiny helper for smooth motion on preferred-reduced-motion -->
     <style>
-        /* 🌟 Modern Navbar Styling */
-        .navbar-custom {
-            background: linear-gradient(90deg, #007bff, #6610f2);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        :root {
+            --green-dark: #0b6b3a;
+            --green-mid: #2e8b57;
+            --accent: #ffd166;
+            --glass-bg: rgba(255,255,255,0.65);
+            --glass-blur: 8px;
+            --card-radius: 14px;
+            --shadow-1: 0 6px 18px rgba(15,23,42,0.08);
+            --shadow-2: 0 10px 30px rgba(15,23,42,0.12);
+            --max-width: 1200px;
         }
 
-            .navbar-custom .navbar-brand {
-                color: #fff !important;
-                font-weight: 700;
-                font-size: 1.5rem;
-                letter-spacing: 0.5px;
+        html, body {
+            height: 100%;
+            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg,#f7fff6,#ecfff0 60%);
+            color: #0b2f1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        /* NAVBAR */
+        .navbar-custom {
+            background: linear-gradient(90deg,var(--green-dark), var(--green-mid));
+            padding: .9rem 1rem;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            box-shadow: var(--shadow-2);
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            transform-origin: top center;
+            animation: slideDown 450ms cubic-bezier(.2,.9,.2,1);
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: 700;
+            letter-spacing: .4px;
+            display: flex;
+            gap: .6rem;
+            align-items: center;
+            font-size: 1.15rem;
+        }
+
+            .navbar-brand .logo-badge {
+                background: rgba(255,255,255,0.12);
+                padding: .38rem .5rem;
+                border-radius: 8px;
+                display: inline-flex;
+                align-items: center;
+                gap: .4rem;
+                box-shadow: inset 0 -6px 14px rgba(0,0,0,0.06);
             }
 
-            .navbar-custom .nav-link {
-                color: #f8f9fa !important;
-                font-weight: 500;
-                margin-right: 15px;
-                transition: all 0.3s ease;
+        .nav-link {
+            color: rgba(255,255,255,0.95) !important;
+            font-weight: 600;
+            margin-right: .25rem;
+            transition: transform .18s ease, color .18s ease;
+        }
+
+            .nav-link:hover {
+                transform: translateY(-2px);
+                color: var(--accent) !important;
             }
 
-                .navbar-custom .nav-link:hover {
-                    color: #ffd700 !important;
-                    transform: scale(1.05);
-                }
+            .nav-link.active {
+                color: var(--accent) !important;
+                text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+            }
 
-                /* Active link highlight */
-                .navbar-custom .nav-link.active {
-                    color: #fff !important;
-                    border-bottom: 2px solid #ffd700;
-                }
+        .navbar-toggler {
+            border: none;
+            background: transparent;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        /* Footer style */
-        footer {
-            background-color: #f8f9fa;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 40px;
-            border-top: 1px solid #eaeaea;
+            .navbar-toggler:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+        /* Container / Main area */
+        .main-container {
+            max-width: var(--max-width);
+            margin: 28px auto;
+            padding: 18px;
+        }
+
+        main[role="main"] {
+            min-height: calc(100vh - 220px);
+        }
+        /* leaves space for header/footer */
+
+        /* Card / glass look */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-1);
+            padding: 1.25rem;
+            border: 1px solid rgba(255,255,255,0.55);
+        }
+
+        /* Footer */
+        footer.footer {
+            background: linear-gradient(90deg,var(--green-mid), var(--green-dark));
+            color: white;
+            padding: 22px 0;
+            margin-top: 36px;
+            box-shadow: 0 -8px 24px rgba(3,37,21,0.12);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        footer .social a {
+            color: var(--accent);
+            margin: 0 .45rem;
+            font-size: 1.15rem;
+            transition: transform .18s ease;
+        }
+
+            footer .social a:hover {
+                transform: translateY(-3px);
+                color: #fff;
+            }
+
+        /* Small utility */
+        .muted {
+            color: rgba(11,47,26,0.7);
+            font-size: .95rem;
+        }
+
+        .brand-pill {
+            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            padding: .3rem .6rem;
+            border-radius: 999px;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: .6px;
+        }
+
+        /* Nice buttons */
+        .btn-accent {
+            background: linear-gradient(90deg,var(--accent), #ffb84d);
+            border: none;
+            color: #082009;
+            font-weight: 700;
+            box-shadow: 0 8px 22px rgba(255,177,66,0.12);
+            transition: transform .14s ease, box-shadow .14s ease;
+            border-radius: 12px;
+        }
+
+            .btn-accent:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 14px 34px rgba(255,177,66,0.18);
+            }
+
+        /* Animated helpers */
+        @@keyframes slideDown {
+            from
+
+        {
+            opacity: 0;
+            transform: translateY(-8px) scale(.995);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        }
+        @@keyframes floatUp {
+            0%
+
+        {
+            transform: translateY(0)
+        }
+
+        50% {
+            transform: translateY(-6px)
+        }
+
+        100% {
+            transform: translateY(0)
+        }
+
+        }
+
+        .float {
+            animation: floatUp 4s ease-in-out infinite;
+        }
+
+        /* Responsive tweaks */
+        @@media (max-width: 768px) {
+            .navbar-brand
+
+        {
+            font-size: 1rem;
+        }
+
+        .main-container {
+            margin-top: 14px;
+            padding: 12px;
+        }
+
+        }
+
+        /* Respect reduce-motion */
+        @@media (prefers-reduced-motion: reduce) {
+            .float, .navbar-custom
+
+        {
+            animation: none !important;
+            transition: none !important;
+        }
+
         }
     </style>
-</head>
 
+    @RenderSection("HeadContent", required: false)
+</head>
 <body>
-    <!-- 🌐 Navbar -->
+    <!-- NAVBAR -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-custom">
-            <div class="container-fluid">
-                <!-- Brand -->
+            <div class="container-fluid px-4">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    CRUD Application
+                    <span class="logo-badge"><i class="fa-solid fa-leaf"></i></span>
+                    <span>CRUD Application</span>
                 </a>
 
-                <!-- Mobile Toggle Button -->
-                <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="text-white"><i class="fa-solid fa-bars fa-lg"></i></span>
                 </button>
 
-                <!-- Navbar Links -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
+                               asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fa-solid fa-house me-1"></i> Home
+                            </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Users" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
+                               asp-area="" asp-controller="Users" asp-action="Index">
+                                <i class="fa-solid fa-users me-1"></i> Users
+                            </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Create">Create</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Users" && ViewContext.RouteData.Values["action"]?.ToString() == "Create" ? "active" : "")"
+                               asp-area="" asp-controller="Users" asp-action="Create">
+                                <i class="fa-solid fa-user-plus me-1"></i> Create
+                            </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Privacy" ? "active" : "")"
+                               asp-area="" asp-controller="Home" asp-action="Privacy">
+                                <i class="fa-solid fa-shield-halved me-1"></i> Privacy
+                            </a>
+                        </li>
+
+                        <!-- Example right-side button -->
+                        <li class="nav-item d-flex align-items-center ms-3">
+                            <a asp-controller="Account" asp-action="Login" class="btn btn-sm btn-accent shadow-sm">
+                                <i class="fa-solid fa-right-to-bracket me-2"></i> Sign in
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -89,22 +310,45 @@
         </nav>
     </header>
 
-    <!-- 🧱 Main Content -->
-    <div class="container mt-4">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <!-- MAIN CONTENT WRAPPER -->
+    <!-- MAIN CONTENT WRAPPER -->
+    <main role="main" class="p-0 m-0 w-100 h-100">
+        @RenderBody()
+    </main>
 
-    <!-- ⚙️ Footer -->
-    <footer class="footer text-muted">
-        <div class="container">
-            &copy; 2025 - CRUD_Application_Project
-        </div>
-    </footer>
+    @RenderSection("AfterMain", required: false)
 
-    <!-- ✅ Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- FOOTER -->
+
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="" crossorigin="anonymous"></script>
+
+    <script>
+        // Small enhancement: add subtle floating to brand logo on larger screens
+        (function(){
+            try {
+                const logo = document.querySelector('.navbar-brand .logo-badge');
+                if (logo && window.matchMedia('(min-width: 992px)').matches) {
+                    logo.classList.add('float');
+                }
+            } catch(e) { /* ignore */ }
+        })();
+
+        // Optional: collapses navbar on link click (mobile UX)
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(function(link){
+            link.addEventListener('click', function(){
+                const bsCollapse = document.querySelector('#navbarNav');
+                if (bsCollapse && window.getComputedStyle(document.querySelector('.navbar-toggler')).display !== 'none') {
+                    // collapse using bootstrap's collapse class toggle
+                    const collapseInstance = bootstrap.Collapse.getOrCreateInstance(bsCollapse);
+                    collapseInstance.hide();
+                }
+            });
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

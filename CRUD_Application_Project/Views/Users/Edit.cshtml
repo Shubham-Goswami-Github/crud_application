@@ -1,54 +1,189 @@
 ﻿@model CRUD_Application_Project.Models.User
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit User";
 }
 
-<h1>Edit</h1>
+<div class="container-fluid p-0 min-vh-100 d-flex align-items-center justify-content-center position-relative">
 
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <!-- Background Image -->
+    <div class="bg-image"></div>
+
+    <!-- Gradient Overlay -->
+    <div class="position-absolute top-0 start-0 w-100 h-100"
+         style="background: linear-gradient(to right, rgba(0, 50, 0, 0.5) 30%, rgba(255,255,255,0) 90%);">
+    </div>
+
+    <!-- Centered Form Card -->
+    <div class="position-relative z-3 p-4 rounded-4 shadow-lg animate__animated animate__fadeInUp form-box">
+
+        <h2 class="text-center mb-3 text-forest fw-bold">🌿 Edit User 🌿</h2>
+
+        <form asp-action="Edit" class="needs-validation" novalidate>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
+
+            <div class="form-group mb-2">
+                <label asp-for="FullName" class="form-label fw-semibold"></label>
+                <input asp-for="FullName" class="form-control stylish-input" placeholder="Full name" />
+                <span asp-validation-for="FullName" class="text-danger small"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ContactNumber" class="control-label"></label>
-                <input asp-for="ContactNumber" class="form-control" />
-                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+
+            <div class="form-group mb-2">
+                <label asp-for="ContactNumber" class="form-label fw-semibold"></label>
+                <input asp-for="ContactNumber" class="form-control stylish-input" placeholder="Contact number" />
+                <span asp-validation-for="ContactNumber" class="text-danger small"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+
+            <div class="form-group mb-2">
+                <label asp-for="Email" class="form-label fw-semibold"></label>
+                <input asp-for="Email" class="form-control stylish-input" placeholder="Email address" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+
+            <div class="form-group mb-2">
+                <label asp-for="Password" class="form-label fw-semibold"></label>
+                <input asp-for="Password" type="password" class="form-control stylish-input" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+            <div class="form-group mb-3">
+                <label asp-for="ConfirmPassword" class="form-label fw-semibold"></label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control stylish-input" placeholder="Confirm password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="d-grid mt-2">
+                <button type="submit" class="btn btn-forest btn-lg rounded-pill shadow-sm hover-zoom">💾 Save Changes</button>
+            </div>
+
+            <div class="text-center mt-3">
+                <a asp-action="Index" class="text-decoration-none text-forest fw-semibold">🔙 Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: 'Poppins', sans-serif;
+        background: #f0f5f0;
+    }
+
+    .bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://github.com/Shubham-Goswami-Github/portfolio-images/raw/main/bg.jpg');
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+    }
+
+    /* Form Box */
+    .form-box {
+        width: 380px;
+        background: rgba(255, 255, 255, 0.97);
+        border-radius: 20px;
+        border: 2px solid #2e8b57;
+        box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+        backdrop-filter: blur(5px);
+        animation-duration: 1s;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .form-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+        }
+
+    /* Heading */
+    .text-forest {
+        background: linear-gradient(90deg, #006400, #2e8b57, #32cd32);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.9rem;
+        letter-spacing: 1px;
+    }
+
+    /* Inputs */
+    .stylish-input {
+        border-radius: 10px !important;
+        border: 2px solid #cce6cc;
+        background: #f7fff6;
+        padding: 0.55rem 0.8rem;
+        transition: all 0.3s ease;
+    }
+
+        .stylish-input:focus {
+            border-color: #2e8b57;
+            box-shadow: 0 0 12px rgba(46,139,87,0.6);
+            transform: translateY(-1px);
+        }
+
+    /* Button */
+    .btn-forest {
+        background: linear-gradient(90deg, #2e8b57, #32cd32);
+        color: white;
+        border: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+        .btn-forest:hover {
+            transform: scale(1.06);
+            background: linear-gradient(90deg, #228b22, #2e8b57);
+            box-shadow: 0 6px 16px rgba(0,100,0,0.4);
+        }
+
+    .hover-zoom {
+        transition: transform 0.3s ease;
+    }
+
+        .hover-zoom:hover {
+            transform: scale(1.08);
+        }
+
+    /* Heading animation */
+    h2 {
+        animation: fadeInDown 1s ease-in-out;
+    }
+
+    @@keyframes fadeInDown {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .form-box
+
+    {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    }
+</style>
