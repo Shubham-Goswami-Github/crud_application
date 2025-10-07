@@ -2,7 +2,213 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- AOS CSS + JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: #f5f9ff;
+    }
+
+    /* Hero Section */
+    .rcs-hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 20px; /* edge-to-edge margin kam */
+        gap: 60px; /* sections ke beech gap */
+        background: linear-gradient(135deg, #eaf3fb, #f0f7ff);
+        flex-wrap: wrap;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Left Slideshow */
+    .rcs-carousel {
+        flex: 1;
+        max-width: 900px; /* thoda bada image */
+      
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .carousel-inner img {
+        width: 100%;
+        height: 450px; /* height increase */
+        object-fit: cover;
+    }
+
+    /* Right Text */
+    .rcs-text {
+        flex: 1;
+        max-width: 600px;
+        text-align: left;
+    }
+
+        .rcs-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .rcs-text .highlight {
+            background: linear-gradient(to right, #006400, #228B22);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .rcs-text .society {
+            color: #004d26;
+            margin-left: 12px;
+			font-size: 2.5rem;
+        }
+
+    .rcs-subtext {
+        font-style: italic;
+        font-size: 1.1rem;
+        color: #333;
+        margin-top: 12px;
+    }
+
+    .rcs-text ul {
+        margin-top: 20px;
+        padding-left: 18px;
+    }
+
+        .rcs-text ul li {
+            font-style: italic;
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s forwards;
+        }
+
+            .rcs-text ul li:nth-child(1) {
+                animation-delay: 0.3s;
+            }
+
+            .rcs-text ul li:nth-child(2) {
+                animation-delay: 0.6s;
+            }
+
+            .rcs-text ul li:nth-child(3) {
+                animation-delay: 0.9s;
+            }
+
+    @@keyframes fadeUp {
+        to
+
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+
+    /* Responsive */
+    @@media(max - width: 992px)
+
+    {
+        .rcs-hero
+
+    {
+        flex-direction: column;
+        padding: 40px 10px;
+        gap: 40px;
+    }
+
+    .rcs-text h1 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .rcs-text, .rcs-carousel {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .carousel-inner img {
+        height: 300px;
+    }
+
+    }
+
+    @@media(max - width: 576px)
+
+    {
+        .rcs-text h1
+
+    {
+        font-size: 1.8rem;
+    }
+
+    .carousel-inner img {
+        height: 250px;
+    }
+
+    }
+</style>
+
+<!-- Hero Section -->
+<div class="rcs-hero" data-aos="fade-up">
+
+    <!-- Left Slideshow -->
+    <div id="rcsCarousel" class="carousel slide rcs-carousel" data-bs-ride="carousel" data-aos="fade-right">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://github.com/Shubham-Goswami-Github/portfolio-images/blob/main/slide1.jpg?raw=true" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://github.com/Shubham-Goswami-Github/portfolio-images/blob/main/slide2.jpg?raw=true" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://github.com/Shubham-Goswami-Github/portfolio-images/blob/main/slide3.jpg?raw=true" alt="Slide 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://github.com/Shubham-Goswami-Github/portfolio-images/blob/main/slide4.jpg?raw=true" alt="Slide 4">
+            </div>
+            <div class="carousel-item">
+                <img src="https://github.com/Shubham-Goswami-Github/portfolio-images/blob/main/slide5.jpg?raw=true" alt="Slide 5">
+            </div>
+        </div>
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#rcsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#rcsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Right Text -->
+    <div class="rcs-text" data-aos="fade-left">
+        <h1>
+            <span class="highlight">Empowering</span> <br />
+			<span class="society">Cooperative Societies </span> <br />
+             <span class="society" > Jharkhand</span>
+        </h1>
+        <p class="rcs-subtext">
+            The Registered Cooperative Societies portal is a government initiative to bring efficiency, transparency, and accountability in the cooperative sector.
+        </p>
+        <ul>
+            <li>✦ Online registration and management of Cooperative Societies.</li>
+            <li>✦ Ensuring fair governance and compliance with government policies.</li>
+            <li>✦ Providing citizens with easy access to schemes, notices, and resources.</li>
+        </ul>
+    </div>
 </div>
+
+<script>
+    AOS.init({ duration: 1000, once: true });
+</script>
